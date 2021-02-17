@@ -2,8 +2,8 @@
   "orgName": "mfe",
   "projectName": "welcome",
   "imports": {
-    "@mfe/welcome": "https://d1vy3eajz01urc.cloudfront.net/mfe-welcome/stg/mfe-welcome.js",
-    "@mfe/welcome/": "https://d1vy3eajz01urc.cloudfront.net/mfe-welcome/stg/"
+    "@mfe/welcome": "/mfe-welcome/stg/mfe-welcome.js",
+    "@mfe/welcome/": "/mfe-welcome/stg/"
   },
   "layout": {
     "routes": [

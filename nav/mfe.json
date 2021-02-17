@@ -2,8 +2,8 @@
     "orgName": "mfe",
     "projectName": "nav",
     "imports": {
-        "@mfe/nav": "https://d1vy3eajz01urc.cloudfront.net/mfe-nav/stg/mfe-nav.js",
-        "@mfe/nav/": "https://d1vy3eajz01urc.cloudfront.net/mfe-nav/stg/"
+        "@mfe/nav": "/mfe-nav/stg/mfe-nav.js",
+        "@mfe/nav/": "/mfe-nav/stg/"
     },
     "layout": {
         "routes": [
