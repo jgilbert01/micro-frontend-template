@@ -1,0 +1,26 @@
+{
+    "orgName": "mfe",
+    "projectName": "nav",
+    "imports": {
+        "@mfe/nav": "https://d1vy3eajz01urc.cloudfront.net/mfe-nav/stg/mfe-nav.js",
+        "@mfe/nav/": "https://d1vy3eajz01urc.cloudfront.net/mfe-nav/stg/"
+    },
+    "layout": {
+        "routes": [
+            {
+                "type": "application",
+                "name": "@mfe/nav"
+            }
+        ]
+    },
+    "mount-points": {
+        "left-nav": [
+            {
+                "id": "home",
+                "order": 0,
+                "title": "Home",
+                "route": "/"
+            }
+        ]
+    }
+}
