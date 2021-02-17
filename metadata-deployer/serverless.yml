@@ -1,0 +1,87 @@
+service: mfe-metadata-deployer
+
+provider:
+  name: aws
+  # cfnRole: arn:aws:iam::${self:custom.accounts.${opt:acct}.accountNumber}:role/cfnRole
+  # deploymentBucket: myprefix-${opt:acct}-${opt:region}-serverlessdeploymentbucket
+  runtime: nodejs14.x
+  environment:
+    ACCOUNT_NAME: ${opt:acct}
+    PROJECT: ${self:service}
+    STAGE: ${opt:stage}
+    DEBUG: ${self:custom.accounts.${opt:acct}.debug}
+    BUCKET_NAME: ${cf:mfe-main-${opt:stage}.BucketName}
+    BASE_URL: ${cf:mfe-main-${opt:stage}.WebsiteDistributionURL} # TODO REMOVE
+    # BUS_NAME: ${cf:event-hub-${opt:stage}.busName}
+    # BUS_ARN: ${cf:event-hub-${opt:stage}.busArn}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:PutObject
+        - s3:PutObjectAcl
+        - s3:GetObject
+      Resource:
+        - Fn::Join:
+          - ''
+          - - ${cf:mfe-main-${opt:stage}.BucketArn}
+            - '*'
+    # - Effect: Allow
+    #   Action:
+    #     - events:PutEvents
+    #   Resource: ${self:provider.environment.BUS_ARN}
+
+package:
+  individually: true
+
+custom:
+  webpack:
+    includeModules: true
+  accounts:
+    dev:
+      # accountNumber: 123456789012
+      debug: '*'
+    prod:
+      # accountNumber: 123456789012
+      debug: ''
+
+plugins:
+  - serverless-webpack
+  - baton-vcr-serverless-plugin
+  - serverless-offline
+
+functions:
+  trigger:
+    handler: src/trigger/index.handle
+    # reservedConcurrency: 1
+    events:
+      - sqs:
+          arn:
+            Fn::GetAtt: [ Queue, Arn ]
+
+resources:
+  Resources:
+    Queue:
+      Type: AWS::SQS::Queue
+    QueuePolicy:
+      Type: AWS::SQS::QueuePolicy
+      Properties:
+        Queues:
+          - Ref: Queue
+        PolicyDocument:
+          Statement:
+            - Effect: Allow
+              Principal:
+                Service: sns.amazonaws.com
+              Action: sqs:SendMessage
+              Resource:
+                Fn::GetAtt: [ Queue, Arn ]
+              Condition:
+                ArnEquals:
+                  aws:SourceArn: ${cf:mfe-main-${opt:stage}.Topic}
+    Subscription:
+      Type: AWS::SNS::Subscription
+      Properties:
+        Protocol: sqs
+        Endpoint:
+          Fn::GetAtt: [ Queue, Arn ]
+        TopicArn: ${cf:mfe-main-${opt:stage}.Topic}

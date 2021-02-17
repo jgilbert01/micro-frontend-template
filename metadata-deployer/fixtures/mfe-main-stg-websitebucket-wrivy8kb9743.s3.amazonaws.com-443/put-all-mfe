@@ -1,0 +1,13 @@
+PUT /all-mfe.json
+content-type: application/json
+host: mfe-main-stg-websitebucket-wrivy8kb9743.s3.amazonaws.com
+body: {\"mfe-main\":{\"orgName\":\"mfe\",\"projectName\":\"main\",\"imports\":{\"single-spa\":\"https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js\",\"react\":\"https://cdn.jsdelivr.net/npm/react@16.13.1/umd/react.production.min.js\",\"react-dom\":\"https://cdn.jsdelivr.net/npm/react-dom@16.13.1/umd/react-dom.production.min.js\",\"@mfe/main\":\"https://d1vy3eajz01urc.cloudfront.net/mfe-main/stg/mfe-main.js\",\"@mfe/main/\":\"https://d1vy3eajz01urc.cloudfront.net/mfe-main/stg/\"},\"layout\":{\"mode\":\"history\",\"routes\":[{\"type\":\"route\",\"default\":true,\"routes\":[{\"type\":\"h1\",\"routes\":[{\"type\":\"p\",\"routes\":[{\"type\":\"#text\",\"value\":\"Hello again\"}]}]}]}]}},\"mfe-welcome\":{\"orgName\":\"mfe\",\"projectName\":\"welcome\",\"imports\":{\"@mfe/welcome\":\"https://d1vy3eajz01urc.cloudfront.net/mfe-welcome/stg/mfe-welcome.js\",\"@mfe/welcome/\":\"https://d1vy3eajz01urc.cloudfront.net/mfe-welcome/stg/\"},\"layout\":{\"routes\":[{\"type\":\"route\",\"path\":\"welcome\",\"routes\":[{\"type\":\"application\",\"name\":\"@mfe/welcome\"}]}]},\"mount-points\":{\"left-nav\":[{\"id\":\"1\",\"title\":\"Welcome\",\"route\":\"welcome\"}]}}}
+
+HTTP/1.1 200 OK
+x-amz-id-2: CHy1+DLrLGdu+21hV5TWmIdTcu1hwZUe5dkiEjEKRPNOfzhmBj6EvWVnkMalLfqDAWt7w3wFK/o=
+x-amz-request-id: 5CC78F7BBC8EB7D9
+date: Tue, 16 Feb 2021 18:55:03 GMT
+etag: "511d71e36efdc1d66943b3d8b7ccd436"
+content-length: 0
+server: AmazonS3
+

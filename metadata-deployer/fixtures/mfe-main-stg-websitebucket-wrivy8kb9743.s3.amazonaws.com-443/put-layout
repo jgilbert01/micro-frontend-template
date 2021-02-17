@@ -1,0 +1,13 @@
+PUT /layout.json
+content-type: application/json
+host: mfe-main-stg-websitebucket-wrivy8kb9743.s3.amazonaws.com
+body: {\"routes\":[{\"type\":\"route\",\"default\":true,\"routes\":[{\"type\":\"h1\",\"routes\":[{\"type\":\"p\",\"routes\":[{\"type\":\"#text\",\"value\":\"Hello again\"}]}]}]},{\"type\":\"route\",\"path\":\"welcome\",\"routes\":[{\"type\":\"application\",\"name\":\"@mfe/welcome\"}]}],\"mode\":\"history\"}
+
+HTTP/1.1 200 OK
+x-amz-id-2: GjCrNiTxlOvt3onUmvtqAyedIyES3/zMNu1bUL+ANkYJWPtWAyXCXuBatRSVccrmUUndBnzYdjc=
+x-amz-request-id: 7A66995A7C44412B
+date: Tue, 16 Feb 2021 17:34:01 GMT
+etag: "65920d960d355948cfad01e046af9753"
+content-length: 0
+server: AmazonS3
+

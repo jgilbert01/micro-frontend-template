@@ -1,0 +1,13 @@
+PUT /importmap.json
+content-type: application/json
+host: mfe-main-stg-websitebucket-wrivy8kb9743.s3.amazonaws.com
+body: {\"imports\":{\"single-spa\":\"https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js\",\"react\":\"https://cdn.jsdelivr.net/npm/react@16.13.1/umd/react.production.min.js\",\"react-dom\":\"https://cdn.jsdelivr.net/npm/react-dom@16.13.1/umd/react-dom.production.min.js\",\"@mfe/main\":\"https://d1vy3eajz01urc.cloudfront.net/mfe-main/stg/mfe-main.js\",\"@mfe/main/\":\"https://d1vy3eajz01urc.cloudfront.net/mfe-main/stg/\",\"@mfe/welcome\":\"https://d1vy3eajz01urc.cloudfront.net/mfe-welcome/stg/mfe-welcome.js\",\"@mfe/welcome/\":\"https://d1vy3eajz01urc.cloudfront.net/mfe-welcome/stg/\"}}
+
+HTTP/1.1 200 OK
+x-amz-id-2: G/vrsC4Mki8bFtIcxasTrHp9NHwZRL09maMFdzBGSWWCXP3hZZDFGMk5TZQtnoQT+Bwuk/6MCZY=
+x-amz-request-id: EE9CA02F82CE19D0
+date: Tue, 16 Feb 2021 17:59:14 GMT
+etag: "041911b64c8ad96b6766c5da2a133d74"
+content-length: 0
+server: AmazonS3
+
