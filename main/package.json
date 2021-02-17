@@ -1,0 +1,48 @@
+{
+  "name": "@mfe/main",
+  "scripts": {
+    "start": "webpack serve --port 9000 --env isLocal",
+    "lint": "eslint src --ext js",
+    "test": "cross-env BABEL_ENV=test jest --passWithNoTests",
+    "build": "webpack --mode=production",
+    "dp:lcl": "sls deploy -v -r us-east-1 --acct dev",
+    "rm:lcl": "sls remove -r us-east-1 --acct dev",
+    "dp:stg:e": "eval \"$(assume-role) sls deploy -v -r us-east-1 -s stg --acct dev --force\"",
+    "dp:stg:w": "eval \"$(assume-role) sls deploy -v -r us-west-2 -s stg --acct dev --force\"",
+    "dp:prd:e": "eval \"$(assume-role) sls deploy -v -r us-east-1 -s prd --acct prod --force\"",
+    "dp:prd:w": "eval \"$(assume-role) sls deploy -v -r us-west-2 -s prd --acct prod --force\""
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-env": "^7.12.7",
+    "@babel/runtime": "^7.12.5",
+    "@types/jest": "^26.0.16",
+    "@types/systemjs": "^6.1.0",
+    "babel-eslint": "^11.0.0-beta.2",
+    "concurrently": "^5.3.0",
+    "copy-webpack-plugin": "^7.0.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.15.0",
+    "eslint-config-important-stuff": "^1.1.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
+    "html-webpack-plugin": "^4.5.0",
+    "jest": "^26.6.3",
+    "jest-cli": "^26.6.3",
+    "serve": "^11.3.2",
+    "serverless": "^2.23.0",
+    "serverless-spa-config": "^1.0.8",
+    "serverless-spa-deploy": "^1.0.2",
+    "webpack": "^5.8.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-config-single-spa-react": "^2.0.0-beta.1",
+    "webpack-dev-server": "^4.0.0-beta.0",
+    "webpack-merge": "^5.5.0"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "single-spa": "^5.8.2",
+    "single-spa-layout": "1.4.1"
+  }
+}

@@ -1,0 +1,35 @@
+{
+    "orgName": "mfe",
+    "projectName": "main",
+    "imports": {
+        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js",
+        "react": "https://cdn.jsdelivr.net/npm/react@16.13.1/umd/react.production.min.js",
+        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@16.13.1/umd/react-dom.production.min.js",
+        "@mfe/main": "https://d1vy3eajz01urc.cloudfront.net/mfe-main/stg/mfe-main.js",
+        "@mfe/main/": "https://d1vy3eajz01urc.cloudfront.net/mfe-main/stg/"
+    },
+    "layout": {
+        "routes": [
+            {
+                "type": "route",
+                "default": true,
+                "routes": [
+                    {
+                        "type": "h1",
+                        "routes": [
+                            {
+                                "type": "p",
+                                "routes": [
+                                    {
+                                        "type": "#text",
+                                        "value": "Hello"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

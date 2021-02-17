@@ -1,0 +1,80 @@
+service: mfe-main
+
+provider:
+  name: aws
+  # cfnRole: arn:aws:iam::${self:custom.accounts.${opt:acct}.accountNumber}:role/cfnRole
+  # deploymentBucket: myprefix-${opt:acct}-${opt:region}-serverlessdeploymentbucket
+
+plugins:
+  - serverless-spa-config
+  - serverless-spa-deploy
+
+custom:
+  accounts:
+    dev:
+      accountNumber: 123456789012
+    prod:
+      accountNumber: 210987654321
+  spa:
+    acl: private
+    prefix: ${self:service}/${env:GITHUB_SHA, '${opt:stage}'} # TODO
+    files:
+      - source: ./dist
+        globs: '**/[!index]*'
+        headers:
+          CacheControl: max-age=31536000,immutable # 1 year
+      - source: ./dist
+        globs: index.html
+        key: index.html
+        headers:
+          CacheControl: max-age=300 # 5 minutes
+      # - source: ./
+      #   globs: importmap.json
+      #   key: importmap.json
+      #   headers:
+      #     CacheControl: max-age=300 # 5 minutes
+      # - source: ./
+      #   globs: mount-points.json
+      #   key: mount-points.json
+      #   headers:
+      #     CacheControl: max-age=300 # 5 minutes
+      # - source: ./
+      #   globs: layout.json
+      #   key: layout.json
+      #   headers:
+      #     CacheControl: max-age=300 # 5 minutes
+  # dns:
+  #   hostedZoneId: ZZZZZZZZZZZZZZ
+  #   domainName: example.com
+  #   endpoint: app.${self:custom.cdn.domainName}
+  #   hostedZoneId: ${self:custom.accounts.${opt:acct}.hostedZoneId}
+  #   domainName: ${self:custom.accounts.${opt:acct}.domainName}
+  #   endpoint: ${self:custom.accounts.${opt:acct}.endpoint}
+  cdn:
+    # aliases:
+    #   - ${self:custom.cdn.endpoint}
+    # acmCertificateArn: arn:aws:acm:region:account-id:certificate/certificate-id
+    # disabled: true
+    # enabled: stage1,stage2
+
+resources:
+  Resources:
+    WebsiteBucket:
+      Type: AWS::S3::Bucket
+      DependsOn: [ Topic, TopicPolicy ]
+      Properties:
+        NotificationConfiguration: ${file(includes.yml):NotificationConfiguration}
+    Topic: ${file(includes.yml):Topic}
+    TopicPolicy: ${file(includes.yml):TopicPolicy}
+
+  Outputs:
+    Topic:
+      Value:
+        Ref: Topic
+    BucketName:
+      Value:
+        Ref: WebsiteBucket
+    BucketArn:
+      Value:
+        Fn::GetAtt: [ WebsiteBucket, Arn ]
+

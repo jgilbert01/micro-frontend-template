@@ -1,0 +1,33 @@
+Topic:
+  Type: AWS::SNS::Topic
+  Properties:
+    TopicName: ${self:service}-${opt:stage}-metadata-topic
+
+TopicPolicy:
+  Type: AWS::SNS::TopicPolicy
+  Properties:
+    PolicyDocument:
+      Statement:
+        - Effect: Allow
+          Principal:
+            Service: s3.amazonaws.com
+          Action:
+            - SNS:Publish
+          Resource:
+            Ref: Topic
+          Condition:
+            ArnLike:
+              aws:SourceArn: arn:aws:s3:::${self:service}-${opt:stage}-websitebucket-*
+    Topics:
+      - Ref: Topic
+
+NotificationConfiguration:
+  TopicConfigurations:
+    - Event: s3:ObjectCreated:Put
+      Filter:
+        S3Key:
+          Rules:
+            - Name: suffix
+              Value: mfe.json
+      Topic:
+        Ref: Topic
