@@ -2,8 +2,8 @@
   "orgName": "mfe",
   "projectName": "welcome",
   "imports": {
-    "@mfe/welcome": "/mfe-welcome/stg/mfe-welcome.js",
-    "@mfe/welcome/": "/mfe-welcome/stg/"
+    "@mfe/welcome": "/mfe-welcome/SHA/mfe-welcome.js",
+    "@mfe/welcome/": "/mfe-welcome/SHA/"
   },
   "layout": {
     "routes": [

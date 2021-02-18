@@ -1,12 +1,16 @@
-const path = require("path");
-const { merge } = require("webpack-merge");
-const singleSpaDefaults = require("webpack-config-single-spa-react");
-const CopyPlugin = require("copy-webpack-plugin");
+const path = require('path');
+const { merge } = require('webpack-merge');
+const singleSpaDefaults = require('webpack-config-single-spa-react');
+const CopyPlugin = require('copy-webpack-plugin');
+
+const orgName = 'mfe';
+const projectName = 'welcome';
+const SHA = process.env.CI_COMMIT_SHA || process.env.GITHUB_SHA || 'stg';
 
 module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
-    orgName: "mfe",
-    projectName: "welcome",
+    orgName,
+    projectName,
     webpackConfigEnv,
     argv,
   });
@@ -17,14 +21,21 @@ module.exports = (webpackConfigEnv, argv) => {
     output: {
       path: path.resolve(
         process.cwd(),
-        "dist",
-        "mfe-welcome",
-        process.env.GITHUB_SHA || "stg"
+        'dist',
+        `${orgName}-${projectName}`,
+        SHA
       ),
     },
     plugins: [
       new CopyPlugin({
-        patterns: [{ from: "mfe.json" }],
+        patterns: [{
+          from: 'mfe.json',
+          transform: {
+            transformer(content) {
+              return Buffer.from(content.toString().replace(/SHA/g, SHA));
+            },
+          },
+        }],
       }),
     ],
   });
