@@ -17,7 +17,6 @@ custom:
       accountNumber: 210987654321
   spa:
     acl: private
-    prefix: ${self:service}/${env:GITHUB_SHA, '${opt:stage}'} # TODO
     files:
       - source: ./dist
         globs: '**/[!index]*'
@@ -28,21 +27,6 @@ custom:
         key: index.html
         headers:
           CacheControl: max-age=300 # 5 minutes
-      # - source: ./
-      #   globs: importmap.json
-      #   key: importmap.json
-      #   headers:
-      #     CacheControl: max-age=300 # 5 minutes
-      # - source: ./
-      #   globs: mount-points.json
-      #   key: mount-points.json
-      #   headers:
-      #     CacheControl: max-age=300 # 5 minutes
-      # - source: ./
-      #   globs: layout.json
-      #   key: layout.json
-      #   headers:
-      #     CacheControl: max-age=300 # 5 minutes
   # dns:
   #   hostedZoneId: ZZZZZZZZZZZZZZ
   #   domainName: example.com
