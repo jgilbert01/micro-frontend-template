@@ -5,31 +5,9 @@
         "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js",
         "react": "https://cdn.jsdelivr.net/npm/react@16.13.1/umd/react.production.min.js",
         "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@16.13.1/umd/react-dom.production.min.js",
+        "@material-ui/core": "https://unpkg.com/@material-ui/core@latest/umd/material-ui.production.min.js",
+        "@material-ui/icons": "https://unpkg.com/@material-ui/icons@latest/umd/material-ui.production.min.js",
         "@mfe/main": "/mfe-main/SHA/mfe-main.js",
         "@mfe/main/": "/mfe-main/SHA/"
-    },
-    "layout": {
-        "routes": [
-            {
-                "type": "route",
-                "default": true,
-                "routes": [
-                    {
-                        "type": "h1",
-                        "routes": [
-                            {
-                                "type": "p",
-                                "routes": [
-                                    {
-                                        "type": "#text",
-                                        "value": "Hello"
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
     }
 }
