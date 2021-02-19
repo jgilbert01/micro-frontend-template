@@ -2,84 +2,14 @@ GET /all-mfe.json
 host: mfe-main-stg-websitebucket-wrivy8kb9743.s3.amazonaws.com
 
 HTTP/1.1 200 OK
-x-amz-id-2: ZalaZffsC69Syy+AOfKDCKlczhmYX0IB3XjDBmZH++tQdo4KpAQXTrii6fultI/bNsjZIGsexZM=
-x-amz-request-id: FF50A176CCBF5F32
-date: Tue,
-16 Feb 2021 16: 46: 45 GMT
-last-modified: Tue,
-16 Feb 2021 16: 40: 37 GMT
-etag: "ee34d7a38b45e63b4b1fa9ef0483370e"
+x-amz-id-2: xSLuOsVldi1VCFESgDmDe0D1D3uMd7zpBNi9oduz0jDfBDAM7ioZY1/f6JhACauDyHzAX0k6PD8=
+x-amz-request-id: EC9C0EE9BAEE7139
+date: Fri, 19 Feb 2021 14:37:59 GMT
+last-modified: Fri, 19 Feb 2021 13:02:42 GMT
+etag: "4991d46ea18b05f4066e0d897fd9c6fb"
 accept-ranges: bytes
 content-type: application/json
-content-length: 641
+content-length: 1506
 server: AmazonS3
 
-{
-    "mfe-main": {
-        "orgName": "mfe",
-        "projectName": "main",
-        "imports": {
-            "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js",
-            "react": "https://cdn.jsdelivr.net/npm/react@16.13.1/umd/react.production.min.js",
-            "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@16.13.1/umd/react-dom.production.min.js",
-            "@mfe/main": "https://d1vy3eajz01urc.cloudfront.net/mfe-main/stg/mfe-main.js",
-            "@mfe/main/": "https://d1vy3eajz01urc.cloudfront.net/mfe-main/stg/"
-        },
-        "layout": {
-            "mode": "history",
-            "routes": [
-                {
-                    "type": "route",
-                    "default": true,
-                    "routes": [
-                        {
-                            "type": "h1",
-                            "routes": [
-                                {
-                                    "type": "p",
-                                    "routes": [
-                                        {
-                                            "type": "#text",
-                                            "value": "Hello again"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
-    },
-    "mfe-welcome": {
-        "orgName": "mfe",
-        "projectName": "welcome",
-        "imports": {
-            "@mfe/welcome": "https://d1vy3eajz01urc.cloudfront.net/mfe-welcome/stg/mfe-welcome.js",
-            "@mfe/welcome/": "https://d1vy3eajz01urc.cloudfront.net/mfe-welcome/stg/"
-        },
-        "layout": {
-            "routes": [
-                {
-                    "type": "route",
-                    "path": "welcome",
-                    "routes": [
-                        {
-                            "type": "application",
-                            "name": "@mfe/welcome"
-                        }
-                    ]
-                }
-            ]
-        },
-        "mount-points": {
-            "left-nav": [
-                {
-                    "id": "1",
-                    "title": "Welcome",
-                    "route": "welcome"
-                }
-            ]
-        }
-    }    
-}
+{"mfe-main":{"orgName":"mfe","projectName":"main","imports":{"single-spa":"https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js","react":"https://cdn.jsdelivr.net/npm/react@16.13.1/umd/react.production.min.js","react-dom":"https://cdn.jsdelivr.net/npm/react-dom@16.13.1/umd/react-dom.production.min.js","@material-ui/core":"https://unpkg.com/@material-ui/core@latest/umd/material-ui.production.min.js","@material-ui/icons":"https://unpkg.com/@material-ui/icons@latest/umd/material-ui.production.min.js","@mfe/main":"/mfe-main/stg/mfe-main.js","@mfe/main/":"/mfe-main/stg/"}},"mfe-welcome":{"orgName":"mfe","projectName":"welcome","imports":{"@mfe/welcome":"/mfe-welcome/stg/mfe-welcome.js","@mfe/welcome/":"/mfe-welcome/stg/"},"layout":{"routes":[{"type":"route","path":"home","routes":[{"type":"application","name":"@mfe/welcome"}]}]},"mount-points":{"left-nav":[{"id":"home","order":2,"title":"Home","icon":"home","route":"/home"}]}},"mfe-nav":{"orgName":"mfe","projectName":"nav","imports":{"@mfe/nav":"/mfe-nav/stg/mfe-nav.js","@mfe/nav/":"/mfe-nav/stg/"},"layout":{"order":1,"routes":[{"type":"application","name":"@mfe/nav"}]}},"mfe-about":{"orgName":"mfe","projectName":"about","imports":{"@mfe/about":"/mfe-about/stg/mfe-about.js","@mfe/about/":"/mfe-about/stg/"},"layout":{"routes":[{"type":"route","path":"about","routes":[{"type":"application","name":"@mfe/about"}]}]},"mount-points":{"left-nav":[{"id":"about","order":60,"title":"About","icon":"star","route":"/about"}]}}}

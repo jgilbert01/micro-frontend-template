@@ -19,16 +19,15 @@ const toPutRequest = uow => ({
       const mounts = app['mount-points'] || {};
 
       return Object.keys(mounts).reduce((a2, c2) => {
-        a2[c2] = [...(a2[c2] || []), ...mounts[c2]];
-        // TODO sort on order field
-        // .sort((a, b) => (a.order || 999) - (b.order || 999));
+        a2[c2] = [...(a2[c2] || []), ...mounts[c2]]
+          .sort((a, b) => (a.order || 999) - (b.order || 999));
         return a2;
       }, a1);
     }, {})),
   },
 });
 
-const print = options => (uow) => options.debug('end: %j', uow);
+const print = options => uow => options.debug('end: %j', uow);
 // const print = uow => console.log('end: ', JSON.stringify(uow, null, 2));
 
 export default pipeline1;

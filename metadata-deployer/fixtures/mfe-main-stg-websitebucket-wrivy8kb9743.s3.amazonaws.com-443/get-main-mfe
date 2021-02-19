@@ -2,15 +2,15 @@ GET /mfe-main/stg/mfe.json
 host: mfe-main-stg-websitebucket-wrivy8kb9743.s3.amazonaws.com
 
 HTTP/1.1 200 OK
-x-amz-id-2: vtYmNEfPJJgOmkJDIdf6C593AsWVM2y37j3+fsUOimJaGvtNiQJ0R3TOgF1YGNfi8lh0E8beS2w=
-x-amz-request-id: C25694D7FA4C4B9B
-date: Tue, 16 Feb 2021 14:22:48 GMT
-last-modified: Tue, 16 Feb 2021 14:21:55 GMT
-etag: "80e4c81b23aa1b510be5226358ac1411"
+x-amz-id-2: 4/Z0OOpcX43FUWg+zCLAKCMmzLAizf2zbw68VPf9hhYc/GO6w1yWyr2jobkyOONYrP85MsIHfYk=
+x-amz-request-id: 381D840C954742A7
+date: Fri, 19 Feb 2021 14:41:15 GMT
+last-modified: Fri, 19 Feb 2021 12:25:27 GMT
+etag: "94b56d6cc797e8aabd6a9bf221cc00f7"
 cache-control: max-age=31536000,immutable
 accept-ranges: bytes
 content-type: application/json
-content-length: 1798
+content-length: 678
 server: AmazonS3
 
 {
@@ -20,32 +20,9 @@ server: AmazonS3
         "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js",
         "react": "https://cdn.jsdelivr.net/npm/react@16.13.1/umd/react.production.min.js",
         "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@16.13.1/umd/react-dom.production.min.js",
-        "@mfe/main": "https://d1vy3eajz01urc.cloudfront.net/mfe-main/stg/mfe-main.js",
-        "@mfe/main/": "https://d1vy3eajz01urc.cloudfront.net/mfe-main/stg/"
-    },
-    "layout": {
-        "mode": "history",
-        "routes": [
-            {
-                "type": "route",
-                "default": true,
-                "routes": [
-                    {
-                        "type": "h1",
-                        "routes": [
-                            {
-                                "type": "p",
-                                "routes": [
-                                    {
-                                        "type": "#text",
-                                        "value": "Hello again"
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
+        "@material-ui/core": "https://unpkg.com/@material-ui/core@latest/umd/material-ui.production.min.js",
+        "@material-ui/icons": "https://unpkg.com/@material-ui/icons@latest/umd/material-ui.production.min.js",
+        "@mfe/main": "/mfe-main/stg/mfe-main.js",
+        "@mfe/main/": "/mfe-main/stg/"
     }
 }

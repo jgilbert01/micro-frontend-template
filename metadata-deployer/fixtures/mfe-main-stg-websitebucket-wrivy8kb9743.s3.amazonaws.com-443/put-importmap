@@ -1,13 +1,13 @@
 PUT /importmap.json
 content-type: application/json
 host: mfe-main-stg-websitebucket-wrivy8kb9743.s3.amazonaws.com
-body: {\"imports\":{\"single-spa\":\"https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js\",\"react\":\"https://cdn.jsdelivr.net/npm/react@16.13.1/umd/react.production.min.js\",\"react-dom\":\"https://cdn.jsdelivr.net/npm/react-dom@16.13.1/umd/react-dom.production.min.js\",\"@mfe/main\":\"https://d1vy3eajz01urc.cloudfront.net/mfe-main/stg/mfe-main.js\",\"@mfe/main/\":\"https://d1vy3eajz01urc.cloudfront.net/mfe-main/stg/\",\"@mfe/welcome\":\"https://d1vy3eajz01urc.cloudfront.net/mfe-welcome/stg/mfe-welcome.js\",\"@mfe/welcome/\":\"https://d1vy3eajz01urc.cloudfront.net/mfe-welcome/stg/\"}}
+body: {\"imports\":{\"single-spa\":\"https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js\",\"react\":\"https://cdn.jsdelivr.net/npm/react@16.13.1/umd/react.production.min.js\",\"react-dom\":\"https://cdn.jsdelivr.net/npm/react-dom@16.13.1/umd/react-dom.production.min.js\",\"@material-ui/core\":\"https://unpkg.com/@material-ui/core@latest/umd/material-ui.production.min.js\",\"@material-ui/icons\":\"https://unpkg.com/@material-ui/icons@latest/umd/material-ui.production.min.js\",\"@mfe/main\":\"/mfe-main/stg/mfe-main.js\",\"@mfe/main/\":\"/mfe-main/stg/\",\"@mfe/welcome\":\"/mfe-welcome/stg/mfe-welcome.js\",\"@mfe/welcome/\":\"/mfe-welcome/stg/\",\"@mfe/nav\":\"/mfe-nav/stg/mfe-nav.js\",\"@mfe/nav/\":\"/mfe-nav/stg/\",\"@mfe/about\":\"/mfe-about/stg/mfe-about.js\",\"@mfe/about/\":\"/mfe-about/stg/\"}}
 
 HTTP/1.1 200 OK
-x-amz-id-2: G/vrsC4Mki8bFtIcxasTrHp9NHwZRL09maMFdzBGSWWCXP3hZZDFGMk5TZQtnoQT+Bwuk/6MCZY=
-x-amz-request-id: EE9CA02F82CE19D0
-date: Tue, 16 Feb 2021 17:59:14 GMT
-etag: "041911b64c8ad96b6766c5da2a133d74"
+x-amz-id-2: IqxPB6jSZyl7kfOalgcaAwevlcFAtm507rC+sqErIiWZUdBuJQmdDqMYtxYH7tBBmY5MHfT54aY=
+x-amz-request-id: B8AEA3A7C0551308
+date: Fri, 19 Feb 2021 14:37:59 GMT
+etag: "156ea595e7225b559d0fbed7498bedaa"
 content-length: 0
 server: AmazonS3
 

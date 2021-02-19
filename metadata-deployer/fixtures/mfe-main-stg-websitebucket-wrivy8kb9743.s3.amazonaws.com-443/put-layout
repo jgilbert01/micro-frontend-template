@@ -1,13 +1,13 @@
 PUT /layout.json
 content-type: application/json
 host: mfe-main-stg-websitebucket-wrivy8kb9743.s3.amazonaws.com
-body: {\"routes\":[{\"type\":\"route\",\"default\":true,\"routes\":[{\"type\":\"h1\",\"routes\":[{\"type\":\"p\",\"routes\":[{\"type\":\"#text\",\"value\":\"Hello again\"}]}]}]},{\"type\":\"route\",\"path\":\"welcome\",\"routes\":[{\"type\":\"application\",\"name\":\"@mfe/welcome\"}]}],\"mode\":\"history\"}
+body: {\"routes\":[{\"type\":\"application\",\"name\":\"@mfe/nav\"},{\"type\":\"route\",\"path\":\"about\",\"routes\":[{\"type\":\"application\",\"name\":\"@mfe/about\"}]},{\"type\":\"route\",\"path\":\"home\",\"routes\":[{\"type\":\"application\",\"name\":\"@mfe/welcome\"}]}]}
 
 HTTP/1.1 200 OK
-x-amz-id-2: GjCrNiTxlOvt3onUmvtqAyedIyES3/zMNu1bUL+ANkYJWPtWAyXCXuBatRSVccrmUUndBnzYdjc=
-x-amz-request-id: 7A66995A7C44412B
-date: Tue, 16 Feb 2021 17:34:01 GMT
-etag: "65920d960d355948cfad01e046af9753"
+x-amz-id-2: 2MaNlYBC6bp0tahH54dZNHyfmzT1IYjOAlrfEtN6N4CZd2NqcV7WfXNYGw+kQ/O9sL7KRMjD7Xs=
+x-amz-request-id: A4C842819343FB27
+date: Fri, 19 Feb 2021 14:37:59 GMT
+etag: "e4d8a5e0086ee18db75379c504232601"
 content-length: 0
 server: AmazonS3
 

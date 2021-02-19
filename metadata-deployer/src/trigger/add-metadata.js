@@ -13,19 +13,19 @@ const pipeline1 = options => stream => stream
   .through(putObjectToS3(options))
   .tap(print(options));
 
-  const toGetRequest = uow => ({
-    ...uow,
-    getRequest: {
-      Bucket: uow.record.s3.bucket.name,
-      Key: FILE_NAME,
-    },
-  });
-  
-  const toMetadata = uow => ({
-    ...uow,
-    apps: uow.getResponse.err ? {} : JSON.parse(Buffer.from(uow.getResponse.Body)),
-  });
-    
+const toGetRequest = uow => ({
+  ...uow,
+  getRequest: {
+    Bucket: uow.record.s3.bucket.name,
+    Key: FILE_NAME,
+  },
+});
+
+const toMetadata = uow => ({
+  ...uow,
+  apps: uow.getResponse.err ? {} : JSON.parse(Buffer.from(uow.getResponse.Body)),
+});
+
 const toPutRequest = uow => ({
   ...uow,
   putRequest: {
@@ -40,7 +40,7 @@ const toPutRequest = uow => ({
   },
 });
 
-const print = options => (uow) => options.debug('end: %j', uow);
+const print = options => uow => options.debug('end: %j', uow);
 // const print = uow => console.log('end: ', JSON.stringify(uow, null, 2));
 
 export default pipeline1;

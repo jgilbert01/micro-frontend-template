@@ -23,7 +23,7 @@ const toPutRequest = uow => ({
   },
 });
 
-const print = options => (uow) => options.debug('end: %j', uow);
+const print = options => uow => options.debug('end: %j', uow);
 // const print = options => uow => console.log('end: ', JSON.stringify(uow, null, 2));
 
 export default pipeline1;

@@ -1,13 +1,13 @@
 PUT /mount-points.json
 content-type: application/json
 host: mfe-main-stg-websitebucket-wrivy8kb9743.s3.amazonaws.com
-body: {\"left-nav\":[{\"id\":\"1\",\"title\":\"Welcome\",\"route\":\"welcome\"}]}
+body: {\"left-nav\":[{\"id\":\"home\",\"order\":2,\"title\":\"Home\",\"icon\":\"home\",\"route\":\"/home\"},{\"id\":\"about\",\"order\":60,\"title\":\"About\",\"icon\":\"star\",\"route\":\"/about\"}]}
 
 HTTP/1.1 200 OK
-x-amz-id-2: SS+BJdxidbscV3HfanV41KEMnHjY+3/+GdjOxP0Psd/EOhDuXoIbsjbB3QECIZ+zH+HTRjnCvbM=
-x-amz-request-id: EC5D8771FA8FE9B8
-date: Tue, 16 Feb 2021 18:00:43 GMT
-etag: "ecdb644c8c777b1c4729e4ba6d748ca1"
+x-amz-id-2: H+tLviMPMUvsWK+rl/oFYfR3mWliC6s0eLRlEQk5LtdHdtKelcmfTNqIRUWB3VHRopptHZDHfCk=
+x-amz-request-id: 34B3D43F3CF01AB0
+date: Fri, 19 Feb 2021 14:37:59 GMT
+etag: "d19da8be69164d211cd1a99fb7fd0172"
 content-length: 0
 server: AmazonS3
 

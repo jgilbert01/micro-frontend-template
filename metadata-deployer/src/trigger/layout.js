@@ -15,20 +15,22 @@ const toPutRequest = uow => ({
     ACL: 'private',
     ContentType: 'application/json',
     CacheControl: 'max-age=300',
-    Body: JSON.stringify(Object.keys(uow.metadata).reduce((a, c) => {
-      const app = uow.metadata[c] || {};
-      const { routes, ...o }  = app.layout || {};
+    Body: JSON.stringify(Object.values(uow.metadata)
+      .filter(app => app.layout)
+      .sort((a, b) => (a.layout?.order || 998) - (b.layout?.order || 999))
+      .reduce((a, app) => {
+        const { routes, order, ...o } = app.layout || {};
 
-      return {
-        ...a,
-        ...o,
-        routes: [...a.routes, ...routes],
-      };
-    }, { routes: [] })),
+        return {
+          ...a,
+          ...o,
+          routes: [...a.routes, ...(routes || [])],
+        };
+      }, { routes: [] })),
   },
 });
 
-const print = options => (uow) => options.debug('end: %j', uow);
+const print = options => uow => options.debug('end: %j', uow);
 // const print = uow => console.log('end: ', JSON.stringify(uow, null, 2));
 
 export default pipeline1;
