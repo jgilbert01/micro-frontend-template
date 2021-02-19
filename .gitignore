@@ -1,0 +1,9 @@
+node_modules
+lib
+.DS_Store
+*.log
+.nyc_output
+.serverless
+coverage
+bak
+dist
