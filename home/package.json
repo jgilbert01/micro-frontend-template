@@ -1,5 +1,5 @@
 {
-  "name": "@mfe/welcome",
+  "name": "@mfe/home",
   "scripts": {
     "start": "webpack serve --port 9001",
     "start:standalone": "webpack serve --port 9001 --env standalone",
