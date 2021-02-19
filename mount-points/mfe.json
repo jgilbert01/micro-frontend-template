@@ -1,0 +1,8 @@
+{
+  "orgName": "mfe",
+  "projectName": "mount-points",
+  "imports": {
+    "@mfe/mount-points": "/mfe-mount-points/SHA/mfe-mount-points.js",
+    "@mfe/mount-points/": "/mfe-mount-points/SHA/"
+  }
+}

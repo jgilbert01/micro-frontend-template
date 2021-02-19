@@ -1,0 +1,1 @@
+# micro-frontend-mount-points
