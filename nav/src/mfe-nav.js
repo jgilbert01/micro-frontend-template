@@ -1,28 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import singleSpaReact from "single-spa-react";
-import Root from "./root.component";
 
 const lifecycles = singleSpaReact({
   React,
   ReactDOM,
-  rootComponent: Root,
+  loadRootComponent: () => import('./root.component.js').then((mod) => mod.default),
+  domElementGetter: () => document.getElementById('nav'),
   errorBoundary(err, info, props) {
-    return (
-      <div className="h-16 flex items-center justify-between px-6 bg-primary text-white">
-        Error
-      </div>
-    );
+    return <div>Error</div>;
   },
-
-  // errorBoundary() {
-  //   return <div>Error</div>;
-  // },
-  // loadRootComponent: () =>
-  //   import(
-  //     "./root.component.js"
-  //   ).then((mod) => mod.default),
-
 });
 
 export const bootstrap = lifecycles.bootstrap;

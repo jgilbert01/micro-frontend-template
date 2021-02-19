@@ -6,20 +6,11 @@
         "@mfe/nav/": "/mfe-nav/stg/"
     },
     "layout": {
+        "order": 1,
         "routes": [
             {
                 "type": "application",
                 "name": "@mfe/nav"
-            }
-        ]
-    },
-    "mount-points": {
-        "left-nav": [
-            {
-                "id": "home",
-                "order": 0,
-                "title": "Home",
-                "route": "/"
             }
         ]
     }
