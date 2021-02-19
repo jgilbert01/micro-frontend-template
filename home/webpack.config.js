@@ -4,7 +4,7 @@ const singleSpaDefaults = require('webpack-config-single-spa-react');
 const CopyPlugin = require('copy-webpack-plugin');
 
 const orgName = 'mfe';
-const projectName = 'welcome';
+const projectName = 'home';
 const SHA = process.env.CI_COMMIT_SHA || process.env.GITHUB_SHA || 'stg';
 
 module.exports = (webpackConfigEnv, argv) => {

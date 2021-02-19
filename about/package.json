@@ -9,10 +9,10 @@
     "test": "cross-env BABEL_ENV=test jest",
     "watch-tests": "cross-env BABEL_ENV=test jest --watch",
     "coverage": "cross-env BABEL_ENV=test jest --coverage",
-    "dp:stg:e": "eval \"$(assume-role) s3-deploy './dist/**' --cwd './dist/' --region us-east-1 --bucket STG_E_BUCKET_NAME --cache 31536000 --private\"",
-    "dp:stg:w": "eval \"$(assume-role) s3-deploy './dist/**' --cwd './dist/' --region us-west-1 --bucket STG_W_BUCKET_NAME --cache 31536000 --private\"",
-    "dp:prd:e": "eval \"$(assume-role) s3-deploy './dist/**' --cwd './dist/' --region us-east-1 --bucket PRD_E_BUCKET_NAME --cache 31536000 --private\"",
-    "dp:prd:w": "eval \"$(assume-role) s3-deploy './dist/**' --cwd './dist/' --region us-west-1 --bucket PRD_W_BUCKET_NAME --cache 31536000 --private\""
+    "dp:stg:e": "eval \"$(assume-role) s3-deploy './dist/**' --cwd './dist/' --region us-east-1 --bucket $STG_E_BUCKET_NAME --cache 31536000 --private\"",
+    "dp:stg:w": "eval \"$(assume-role) s3-deploy './dist/**' --cwd './dist/' --region us-west-1 --bucket $STG_W_BUCKET_NAME --cache 31536000 --private\"",
+    "dp:prd:e": "eval \"$(assume-role) s3-deploy './dist/**' --cwd './dist/' --region us-east-1 --bucket $PRD_E_BUCKET_NAME --cache 31536000 --private\"",
+    "dp:prd:w": "eval \"$(assume-role) s3-deploy './dist/**' --cwd './dist/' --region us-west-1 --bucket $PRD_W_BUCKET_NAME --cache 31536000 --private\""
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

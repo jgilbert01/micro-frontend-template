@@ -3,26 +3,26 @@ import { useState, useEffect } from 'react';
 let mountPoints = null;
 
 export const useMountPoint = (name) => {
-    const [status, setStatus] = useState({
-        items: mountPoints ? mountPoints[name] : [],
-        loading: false,
-        error: null
-    });
+    const [items, setItems] = useState(mountPoints ? mountPoints[name] || [] : []);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         if (!mountPoints) {
-            setStatus({ loading: true });
+            setLoading(true);
             fetch('/mount-points.json')
                 .then((res) => res.json())
                 .then((res) => {
                     mountPoints = res;
-                    setStatus({ loading: false, items: mountPoints[name] });
+                    setLoading(false);
+                    setItems(mountPoints[name] || []);
                 })
                 .catch((error) => {
-                    setStatus({ loading: false, error });
+                    setLoading(false);
+                    setError(error);
                 });
         }
     }, []);
 
-    return { ...status };
+    return { items, loading, error };
 }
