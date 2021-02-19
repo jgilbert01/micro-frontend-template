@@ -20,7 +20,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
 import { Link } from "@reach/router";
-import { useMountPoint } from '@mfe/main';
+import { useMountPoint } from '@mfe/mount-points';
 
 const drawerWidth = 240;
 

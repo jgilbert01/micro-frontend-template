@@ -22,5 +22,3 @@ fetch('/layout.json')
     layoutEngine.activate();
     start();
   });
-
-export * from './mount-points';
