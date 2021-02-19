@@ -1,19 +1,19 @@
 {
   "orgName": "mfe",
-  "projectName": "welcome",
+  "projectName": "home",
   "imports": {
-    "@mfe/welcome": "/mfe-welcome/SHA/mfe-welcome.js",
-    "@mfe/welcome/": "/mfe-welcome/SHA/"
+    "@mfe/home": "/mfe-home/SHA/mfe-home.js",
+    "@mfe/home/": "/mfe-home/SHA/"
   },
   "layout": {
     "routes": [
       {
         "type": "route",
-        "path": "welcome",
+        "path": "home",
         "routes": [
           {
             "type": "application",
-            "name": "@mfe/welcome"
+            "name": "@mfe/home"
           }
         ]
       }
@@ -22,10 +22,11 @@
   "mount-points": {
     "left-nav": [
       {
-        "id": "welcome",
-        "order": 2,
-        "title": "Welcome",
-        "route": "/welcome"
+        "id": "home",
+        "order": 10,
+        "title": "Home",
+        "icon": "home",
+        "route": "/home"
       }
     ]
   }
