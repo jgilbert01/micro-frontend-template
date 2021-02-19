@@ -42,6 +42,9 @@
   -->
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js" as="script">
 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  
   <!-- Add your organization's prod import map URL to this script's src  -->
   <script type="systemjs-importmap" src="/importmap.json"></script>
 
@@ -68,10 +71,10 @@
       <% if (isLocal) { %>
         <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/amd.js"></script>
-        <% } else { %>
-          <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.min.js"></script>
-          <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/amd.min.js"></script>
-          <% } %>
+      <% } else { %>
+        <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/amd.min.js"></script>
+      <% } %>
 </head>
 
 <body>
@@ -79,6 +82,9 @@
     System.import('@mfe/main');
   </script>
   <import-map-overrides-full show-when-local-storage="devtools" dev-libs></import-map-overrides-full>
+
+  <nav id="nav"></nav>
+
 </body>
 
 </html>
