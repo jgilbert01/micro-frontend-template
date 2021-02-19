@@ -1,0 +1,33 @@
+{
+  "orgName": "mfe",
+  "projectName": "about",
+  "imports": {
+    "@mfe/about": "/mfe-about/SHA/mfe-about.js",
+    "@mfe/about/": "/mfe-about/SHA/"
+  },
+  "layout": {
+    "routes": [
+      {
+        "type": "route",
+        "path": "about",
+        "routes": [
+          {
+            "type": "application",
+            "name": "@mfe/about"
+          }
+        ]
+      }
+    ]
+  },
+  "mount-points": {
+    "left-nav": [
+      {
+        "id": "about",
+        "order": 90,
+        "title": "About",
+        "icon": "star",
+        "route": "/about"
+      }
+    ]
+  }
+}
