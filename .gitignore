@@ -4,6 +4,7 @@ lib
 *.log
 .nyc_output
 .serverless
+.webpack
 coverage
 bak
 dist
