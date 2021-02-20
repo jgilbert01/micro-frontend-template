@@ -1,0 +1,22 @@
+{
+  "orgName": "mfe",
+  "projectName": "task",
+  "imports": {
+    "@mfe/task": "/mfe-task/SHA/mfe-task.js",
+    "@mfe/task/": "/mfe-task/SHA/"
+  },
+  "layout": {
+    "routes": [
+      {
+        "type": "route",
+        "path": "task",
+        "routes": [
+          {
+            "type": "application",
+            "name": "@mfe/task"
+          }
+        ]
+      }
+    ]
+  }
+}
