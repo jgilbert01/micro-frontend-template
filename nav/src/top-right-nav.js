@@ -59,7 +59,7 @@ export function TopRightNavDrawer({ parcel, openRight, handleRightDrawerClose, c
       <Container id="flyout" maxWidth="lg" className={classes.container}>
         {
           parcel ?
-            <Parcel config={() => System.import(parcel)} />
+            <Parcel config={() => System.import(parcel)} handleRightDrawerClose={handleRightDrawerClose} />
             :
             <div>Parcel not defined</div>
         }
