@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -9,18 +9,18 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import Icon from '@material-ui/core/Icon';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
 import { Link } from "@reach/router";
 import { useMountPoint } from '@mfe/mount-points';
+
+import { TopRightNav, TopRightNavDrawer, parcelReducer } from './top-right-nav';
 
 const drawerWidth = 240;
 
@@ -35,6 +35,13 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
+    padding: '0 8px',
+    ...theme.mixins.toolbar,
+  },
+  flyoutIcon: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-left',
     padding: '0 8px',
     ...theme.mixins.toolbar,
   },
@@ -107,43 +114,53 @@ export default function Root(props) {
   const { items, loading, error } = useMountPoint('left-nav');
 
   const classes = useStyles();
-  const [open, setOpen] = useState(false);
-  const handleDrawerOpen = () => setOpen(true);
-  const handleDrawerClose = () => setOpen(false);
+  const [openLeft, setOpenLeft] = useState(false);
+  const handleLeftDrawerOpen = () => setOpenLeft(true);
+  const handleLeftDrawerClose = () => setOpenLeft(false);
+
+  const [openRight, setOpenRight] = useState(false);
+  const [rightParcel, rightParcelDispatch] = useReducer(parcelReducer, null);
+  const toggleRightDrawer = (parcel) => () => {
+    rightParcelDispatch({ type: 'open', parcel });
+    setOpenRight(!openRight);
+  };
+  const handleRightDrawerClose = () => {
+    rightParcelDispatch({ type: 'close' });
+    setOpenRight(false);
+  };
 
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+      <AppBar position="absolute" className={clsx(classes.appBar, openLeft && classes.appBarShift)}>
         <Toolbar className={classes.toolbar}>
           <IconButton
             edge="start"
             color="inherit"
             aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
+            onClick={handleLeftDrawerOpen}
+            className={clsx(classes.menuButton, openLeft && classes.menuButtonHidden)}
           >
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             Micro Frontend Demo
                   </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
+
+          <TopRightNav toggleRightDrawer={toggleRightDrawer} />
+
         </Toolbar>
       </AppBar>
+      {/* left-nav */}
       <Drawer
-        variant="permanent"
+        variant='permanent'
         classes={{
-          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+          paper: clsx(classes.drawerPaper, !openLeft && classes.drawerPaperClose),
         }}
-        open={open}
+        open={openLeft}
       >
         <div className={classes.toolbarIcon}>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton onClick={handleLeftDrawerClose}>
             <ChevronLeftIcon />
           </IconButton>
         </div>
@@ -165,10 +182,14 @@ export default function Root(props) {
               ))
         }</List>
       </Drawer>
+
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container id="container" maxWidth="lg" className={classes.container} />
       </main>
+
+      {/* top-right-nav */}
+      <TopRightNavDrawer parcel={rightParcel} openRight={openRight} handleRightDrawerClose={handleRightDrawerClose} classes={classes} />
     </div>
   );
 }
