@@ -9,7 +9,7 @@
     "routes": [
       {
         "type": "route",
-        "path": "home",
+        "path": "/",
         "routes": [
           {
             "type": "application",
@@ -26,7 +26,7 @@
         "order": 10,
         "title": "Home",
         "icon": "home",
-        "route": "/home"
+        "route": "/"
       }
     ]
   }
