@@ -1,30 +1,48 @@
 import React, { memo } from 'react';
 import { TextField, Paper, Button, Grid } from '@material-ui/core';
 
-const AddTask = memo(props => (
-  <Paper style={{ margin: 16, padding: 16 }}>
-    <Grid container>
-      <Grid xs={10} md={11} item style={{ paddingRight: 16 }}>
-        <TextField
-          placeholder="Add task here"
-          value={props.inputValue}
-          onChange={props.onInputChange}
-          onKeyPress={props.onInputKeyPress}
-          fullWidth
-        />
-      </Grid>
-      <Grid xs={2} md={1} item>
-        <Button
-          fullWidth
-          color="secondary"
-          variant="outlined"
-          onClick={props.onButtonClick}
-        >
-          Add
+import { useForm } from 'react-hook-form';
+
+const AddTask = memo(({ onSubmit }) => {
+  const { register, handleSubmit } = useForm();
+
+  return (
+    <Paper style={{ margin: 16, padding: 16 }}>
+      <form onSubmit={handleSubmit((data, e) => {
+        e.target.reset(); 
+        onSubmit(data);
+      })}>
+        <Grid container>
+          <Grid item style={{ paddingRight: 16 }}>
+            <TextField
+              placeholder="Subject"
+              name="subject"
+              inputRef={register} 
+              fullWidth
+            />
+          </Grid>
+          <Grid item style={{ paddingRight: 16 }}>
+            <TextField
+              placeholder="Route"
+              name="route"
+              inputRef={register} 
+              fullWidth
+            />
+          </Grid>
+          <Grid item>
+            <Button
+              fullWidth
+              color="secondary"
+              variant="outlined"
+              type="submit"
+            >
+              Add
         </Button>
-      </Grid>
-    </Grid>
-  </Paper>
-));
+          </Grid>
+        </Grid>
+      </form>
+    </Paper>
+  );
+});
 
 export default AddTask;

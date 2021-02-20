@@ -8,16 +8,28 @@ import {
 } from '@material-ui/core';
 import DeleteOutlined from '@material-ui/icons/DeleteOutlined';
 
-const TaskListItem = memo(props => (
-  <ListItem divider={props.divider}>
-    <Checkbox
-      onClick={props.onCheckBoxToggle}
-      checked={props.checked}
-      disableRipple
-    />
-    <ListItemText primary={props.text} />
+import { Link } from "@reach/router";
+
+const TaskListItem = memo(({
+  id, subject, route, checked, divider,
+  onCheckBoxToggle, onButtonClick, handleRightDrawerClose }) => (
+  <ListItem
+    divider={divider}
+    component={Link}
+    key={id}
+    to={route}
+    state={{ id, subject, checked }}
+    onClick={handleRightDrawerClose}>
+
+    <ListItemText primary={subject} />
+    
     <ListItemSecondaryAction>
-      <IconButton aria-label="Delete Task" onClick={props.onButtonClick}>
+      <Checkbox
+        onClick={onCheckBoxToggle}
+        checked={checked}
+        disableRipple
+      />
+      <IconButton aria-label="Delete Task" onClick={onButtonClick}>
         <DeleteOutlined />
       </IconButton>
     </ListItemSecondaryAction>
