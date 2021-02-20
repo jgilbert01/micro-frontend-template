@@ -1,0 +1,19 @@
+{
+  "orgName": "mfe",
+  "projectName": "tasks",
+  "imports": {
+    "@mfe/tasks": "/mfe-tasks/SHA/mfe-tasks.js",
+    "@mfe/tasks/": "/mfe-tasks/SHA/"
+  },
+  "mount-points": {
+    "top-right-nav": [
+      {
+        "id": "tasks",
+        "order": 10,
+        "title": "tasks",
+        "icon": "notifications",
+        "parcel": "@mfe/tasks"
+      }
+    ]
+  }
+}
