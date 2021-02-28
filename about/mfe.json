@@ -22,11 +22,11 @@
   "mount-points": {
     "left-nav": [
       {
-        "id": "about",
+        "key": "about",
         "order": 90,
-        "title": "About",
+        "content": "About",
         "icon": "star",
-        "route": "/about"
+        "to": "/about"
       }
     ]
   }
