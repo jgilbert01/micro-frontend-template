@@ -10,8 +10,8 @@
       {
         "key": "tasks",
         "order": 10,
-        "content": "tasks",
-        "icon": "notifications",
+        "content": "Tasks",
+        "icon": "tasks",
         "parcel": "@mfe/tasks"
       }
     ]

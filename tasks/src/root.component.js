@@ -29,7 +29,7 @@ export default function Root({ name, close, updateCount }) {
 
 export const useTasks = (updateCount) => {
   const emitCount = (tasks) => {
-    updateCount('tasks', tasks.filter(t => !t.checked).length);
+    updateCount(tasks.filter(t => !t.checked).length);
     return tasks;
   }
   
