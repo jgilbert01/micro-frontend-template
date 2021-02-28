@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 export const useWindowEvent = (name, callback) => {
     useEffect(() => {
         window.addEventListener(name, callback);
