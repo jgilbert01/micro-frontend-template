@@ -1,0 +1,33 @@
+{
+  "orgName": "mfe",
+  "projectName": "things",
+  "imports": {
+    "@mfe/things": "/mfe-things/SHA/mfe-things.js",
+    "@mfe/things/": "/mfe-things/SHA/"
+  },
+  "layout": {
+    "routes": [
+      {
+        "type": "route",
+        "path": "/things",
+        "routes": [
+          {
+            "type": "application",
+            "name": "@mfe/things"
+          }
+        ]
+      }
+    ]
+  },
+  "mount-points": {
+    "left-nav": [
+      {
+        "key": "things",
+        "order": 40,
+        "content": "Things",
+        "icon": "tv",
+        "to": "/things"
+      }
+    ]
+  }
+}
