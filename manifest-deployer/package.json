@@ -1,5 +1,5 @@
 {
-  "name": "mfe-metadata-deployer",
+  "name": "mfe-manifest-deployer",
   "private": true,
   "scripts": {
     "clean": "rm -rf .nyc_output/ .webpack/ .serverless/ coverage/",

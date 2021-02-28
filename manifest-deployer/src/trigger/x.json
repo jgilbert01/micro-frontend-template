@@ -1,0 +1,22 @@
+{
+    "imports": {
+        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js",
+        "react": "https://cdn.jsdelivr.net/npm/react@16.13.1/umd/react.production.min.js",
+        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@16.13.1/umd/react-dom.production.min.js",
+        "semantic-ui": "https://cdn.jsdelivr.net/npm/semantic-ui@$latest/dist/semantic.min.js",
+        "@mfe/main": "/mfe-main/stg/mfe-main.js",
+        "@mfe/main/": "/mfe-main/stg/",
+        "@mfe/nav": "/mfe-nav/stg/mfe-nav.js",
+        "@mfe/nav/": "/mfe-nav/stg/",
+        "@mfe/home": "/mfe-home/stg/mfe-home.js",
+        "@mfe/home/": "/mfe-home/stg/",
+        "@mfe/about": "/mfe-about/stg/mfe-about.js",
+        "@mfe/about/": "/mfe-about/stg/",
+        "@mfe/mount-points": "/mfe-mount-points/stg/mfe-mount-points.js",
+        "@mfe/mount-points/": "/mfe-mount-points/stg/",
+        "@mfe/tasks": "/mfe-tasks/stg/mfe-tasks.js",
+        "@mfe/tasks/": "/mfe-tasks/stg/",
+        "@mfe/task": "/mfe-task/stg/mfe-task.js",
+        "@mfe/task/": "/mfe-task/stg/"
+    }
+}

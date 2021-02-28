@@ -1,4 +1,4 @@
-service: mfe-metadata-deployer
+service: mfe-manifest-deployer
 
 provider:
   name: aws

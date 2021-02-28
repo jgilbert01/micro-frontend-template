@@ -11,7 +11,7 @@ const toPutRequest = uow => ({
   ...uow,
   putRequest: {
     Bucket: uow.record.s3.bucket.name,
-    Key: 'layout.json',
+    Key: 'apps.json',
     ACL: 'private',
     ContentType: 'application/json',
     CacheControl: 'max-age=300',

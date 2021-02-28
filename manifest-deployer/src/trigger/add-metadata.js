@@ -4,6 +4,8 @@ import { getObjectFromS3 } from '../utils';
 
 const FILE_NAME = 'all-mfe.json';
 
+// TODO delete an mfe
+
 const pipeline1 = options => stream => stream
   .filter(uow => uow.record.s3.object.key !== FILE_NAME)
   .map(toGetRequest)
