@@ -10,12 +10,12 @@ import {
 
 import Parcel from 'single-spa-react/parcel'
 import { Link } from "@reach/router";
-import { useMountPoint } from '@mfe/mount-points';
+import { useMountPoint, useWindowEvent, dispatchWindowEvent } from '@mfe/shared';
 
 export const useRightSidebar = () => {
   const [state, dispatch] = useReducer(parcelReducer, { visible: false });
 
-  const toggle = ({content, parcel}) => () => {
+  const toggle = ({ content, parcel }) => () => {
     // console.log('toggle-state: ', state);
     // console.log('toggle-parcel: ', parcel);
 
@@ -46,29 +46,31 @@ export const parcelReducer = (state, action) => {
 };
 
 export const TopRightNav = ({ toggle }) => {
-  // console.log('TopRightNav-toggle:', toggle);
-  const items = [
-    { as: "a", content: "Tasks", key: "tasks", icon: "tasks", parcel: "@mfe/tasks", count: 2 },
-    { as: "a", content: "Profile", key: "profile", icon: "user", to: "/profile" },
-  ];
+  const { items, loading, error } = useMountPoint('top-right-nav');
 
   useWindowEvent('TopRightNav', (e) => {
     console.log('TopRightNav: ', e);
-    const item = items.find(i => i.key === e.detail.id)
-    item.count = (item.count || 0) + e.detail.count;
+    const item = items.find(i => i.parcel === e.detail.parcel);
+    if (item)
+      item.count = e.detail.count;
   });
 
   return (
     <Menu.Menu position="right">
-      {items.map((item) => item.parcel ?
-        <Menu.Item key={item.key} onClick={toggle({...item})}>
-          <Icon name={item.icon} />
-          {item.count ? <Label color='red' circular floating >{item.count}</Label> : undefined}
-          {item.content}
-        </Menu.Item>
-        :
-        <Menu.Item {...item} as={Link} />
-      )}
+      {loading ?
+        <Menu.Item>Loading...</Menu.Item>
+        : error ?
+          <Menu.Item>{error}</Menu.Item>
+          :
+          items.map((item) => item.parcel ?
+            <Menu.Item key={item.key} onClick={toggle({ ...item })}>
+              <Icon name={item.icon} />
+              {item.count ? <Label color='red' circular floating >{item.count}</Label> : undefined}
+              {item.content}
+            </Menu.Item>
+            :
+            <Menu.Item {...item} as={Link} />
+          )}
     </Menu.Menu>
   );
 };
@@ -94,7 +96,7 @@ export const RightSidbar = ({
       <h2>{content}</h2>
       {
         parcel ?
-          <Parcel config={() => System.import(parcel)} close={close} updateCount={updateCount} />
+          <Parcel config={() => System.import(parcel)} close={close} updateCount={updateCount(parcel)} />
           :
           <div>Parcel not defined</div>
       }
@@ -103,19 +105,9 @@ export const RightSidbar = ({
   );
 };
 
-// move to utils module
-export const useWindowEvent = (event, callback) => {
-  useEffect(() => {
-    window.addEventListener(event, callback);
-    return () => window.removeEventListener(event, callback);
-  }, [event, callback]);
-};
-
-export const updateCount = (parcel, count) => {
-  window.dispatchEvent(new CustomEvent('TopRightNav', {
-    detail: {
-      parcel,
-      count,
-    }
-  }));
+export const updateCount = (parcel) => (count) => {
+  dispatchWindowEvent('TopRightNav', {
+    parcel,
+    count,
+  });
 };

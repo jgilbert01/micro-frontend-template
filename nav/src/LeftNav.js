@@ -7,7 +7,7 @@ import {
 } from "semantic-ui-react";
 
 import { Link } from "@reach/router";
-import { useMountPoint } from '@mfe/mount-points';
+import { useMountPoint } from '@mfe/shared';
 
 export const useLeftNav = () => {
   const [visible, setVisible] = useState(false);
@@ -45,21 +45,16 @@ export const LeftNavSidbar = ({
 
 export const LeftNavMenuItems = ({ onClick }) => {
 
-  // const { items, loading, error } = useMountPoint('left-nav');
+  const { items, loading, error } = useMountPoint('left-nav');
 
-  const loading = false;
-  const items = [
-    { content: "Home", key: "home", icon: "home", to: "/home" },
-    { content: "About", key: "about", icon: "star", to: "/about" }
-  ];
-
-  // {...item}
   return loading ?
     <Menu.Item>Loading...</Menu.Item>
-    :
-    items.map(item => <Menu.Item key={item.key}
-      content={item.content} icon={item.icon}
-      as={Link} to={item.to} onClick={onClick} />);
+    : error ?
+      <Menu.Item>{error}</Menu.Item>
+      :
+      items.map(item => <Menu.Item key={item.key}
+        content={item.content} icon={item.icon}
+        as={Link} to={item.to} onClick={onClick} />);
 };
 
 export const MainContainer = ({ children }) => (
