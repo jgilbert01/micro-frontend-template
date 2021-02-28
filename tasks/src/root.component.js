@@ -1,10 +1,10 @@
 import React, { useReducer, useEffect } from "react";
 
-import AddTask from './task-add';
-import TaskList from './task-list';
+import AddTask from './TaskAdd';
+import TaskList from './TaskList';
 
-export default function Root(props) {
-  const { tasks, addTask, checkTask, removeTask } = useTasks();
+export default function Root({ name, close, updateCount }) {
+  const { tasks, addTask, checkTask, removeTask } = useTasks(updateCount);
 
   const onSubmit = values => {
     console.log(values);
@@ -14,20 +14,26 @@ export default function Root(props) {
   return (
     <>
       <AddTask onSubmit={onSubmit} />
-
       <TaskList
         items={tasks}
+        onSubmit={onSubmit} 
         onItemCheck={idx => checkTask(idx)}
         onItemRemove={idx => removeTask(idx)}
-        handleRightDrawerClose={props.handleRightDrawerClose}
+        close={close}
+        updateCount={updateCount}
       />
-      <p>{props.name} is mounted!</p>
+      {/* <p>{name} is mounted!</p> */}
     </>
   );
 }
 
-export const useTasks = () => {
-  const initialState = window.localStorage.getItem("tasks") == null
+export const useTasks = (updateCount) => {
+  const emitCount = (tasks) => {
+    updateCount('tasks', tasks.filter(t => !t.checked).length);
+    return tasks;
+  }
+  
+  const initialState = emitCount(window.localStorage.getItem("tasks") == null
     ? [{
       subject: 'do this task first',
       route: "/task/123",
@@ -35,9 +41,9 @@ export const useTasks = () => {
       subject: 'here is another task',
       route: "/task/456",
     }]
-    : emitCount(JSON.parse(window.localStorage.getItem("tasks")));
+    : JSON.parse(window.localStorage.getItem("tasks")));
 
-  const [tasks, dispatch] = useReducer(reducer, initialState);
+  const [tasks, dispatch] = useReducer(reducer(emitCount), initialState);
 
   useEffect(
     () => {
@@ -63,17 +69,7 @@ export const useTasks = () => {
   };
 };
 
-const emitCount = (tasks) => {
-  window.dispatchEvent(new CustomEvent('TopRightNav', {
-    detail: {
-      id: 'tasks',
-      count: tasks.filter(t => !t.checked).length,
-    }
-  }));
-  return tasks;
-}
-
-const reducer = (tasks, action) => {
+const reducer = (emitCount) => (tasks, action) => {
   switch (action.type) {
     case "addTask":
       return emitCount(tasks.concat({
@@ -91,6 +87,5 @@ const reducer = (tasks, action) => {
       return emitCount(tasks.filter((task, index) => action.payload !== index));
     default:
       return tasks;
-
   }
 }

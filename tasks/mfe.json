@@ -8,9 +8,9 @@
   "mount-points": {
     "top-right-nav": [
       {
-        "id": "tasks",
+        "key": "tasks",
         "order": 10,
-        "title": "tasks",
+        "content": "tasks",
         "icon": "notifications",
         "parcel": "@mfe/tasks"
       }
