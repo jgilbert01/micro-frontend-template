@@ -1,0 +1,8 @@
+{
+  "orgName": "mfe",
+  "projectName": "shared",
+  "imports": {
+    "@mfe/shared": "/mfe-shared/SHA/mfe-shared.js",
+    "@mfe/shared/": "/mfe-shared/SHA/"
+  }
+}
