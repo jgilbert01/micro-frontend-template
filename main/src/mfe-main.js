@@ -5,16 +5,14 @@ import {
   constructLayoutEngine,
 } from "single-spa-layout";
 
-fetch('/layout.json')
+fetch('/apps.json')
   .then(res => res.json())
   .then((layout) => {
     // console.log(layout);
     const routes = constructRoutes(layout);
     const applications = constructApplications({
       routes,
-      loadApp({ name }) {
-        return System.import(name);
-      },
+      loadApp: ({ name }) => System.import(name),
     });
     const layoutEngine = constructLayoutEngine({ routes, applications });
 
