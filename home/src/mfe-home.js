@@ -7,9 +7,7 @@ const lifecycles = singleSpaReact({
   ReactDOM,
   loadRootComponent: () => import('./root.component.js').then((mod) => mod.default),
   domElementGetter: () => document.getElementById('container'),
-  errorBoundary(err, info, props) {
-    return <div>Error</div>;
-  },
+  errorBoundary: (err, info, props) => <div>Error</div>,
 });
 
 export const bootstrap = lifecycles.bootstrap;
