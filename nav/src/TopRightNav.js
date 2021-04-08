@@ -45,7 +45,7 @@ export const parcelReducer = (state, action) => {
   }
 };
 
-export const TopRightNav = ({ toggle }) => {
+export const TopRightNav = ({ children, toggle }) => {
   const { items, loading, error } = useMountPoint('top-right-nav');
 
   useWindowEvent('TopRightNav', (e) => {
@@ -71,6 +71,7 @@ export const TopRightNav = ({ toggle }) => {
             :
             <Menu.Item {...item} as={Link} />
           )}
+          {children}
     </Menu.Menu>
   );
 };

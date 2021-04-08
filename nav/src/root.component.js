@@ -8,6 +8,7 @@ import {
 import TopNavBar from './TopNavBar';
 import { useRightSidebar, TopRightNav, RightSidbar } from './TopRightNav';
 import { useLeftNav, LeftNavMenuItem, LeftNavSidbar, MainContainer } from './LeftNav';
+import SignInOut from './SignInOut';
 
 const Root = () => {
   const leftNav = useLeftNav();
@@ -26,7 +27,9 @@ const Root = () => {
           <TopNavBar>
             <LeftNavMenuItem {...leftNav} />
             <Menu.Item key="title"><h1>Micro Frontend Demo</h1></Menu.Item>
-            <TopRightNav {...topRightNav} />
+            <TopRightNav {...topRightNav}>
+              <SignInOut />
+            </TopRightNav>
           </TopNavBar>
 
           <MainContainer />
