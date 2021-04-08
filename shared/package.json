@@ -1,7 +1,7 @@
 {
   "name": "@mfe/shared",
   "scripts": {
-    "start": "webpack serve --port 9001",
+    "start": "webpack serve --port 9008",
     "start:standalone": "webpack serve --port 9001 --env standalone",
     "build": "webpack --mode=production",
     "analyze": "webpack --mode=production --env analyze",
@@ -45,6 +45,7 @@
     "webpack-merge": "^5.4.0"
   },
   "dependencies": {
+    "aws-amplify": "^3.3.21",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   }
