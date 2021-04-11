@@ -1,9 +1,9 @@
-import { registerApplication, start } from "single-spa";
+import { registerApplication, start } from 'single-spa';
 import {
   constructApplications,
   constructRoutes,
   constructLayoutEngine,
-} from "single-spa-layout";
+} from 'single-spa-layout';
 
 fetch('/apps.json')
   .then(res => res.json())
@@ -17,6 +17,11 @@ fetch('/apps.json')
     const layoutEngine = constructLayoutEngine({ routes, applications });
 
     applications.forEach(registerApplication);
-    layoutEngine.activate();
-    start();
+
+    // start after we load these foundational apps
+    return Promise.all([System.import('@mfe/shared'), System.import('@mfe/nav')])
+      .then(() => {
+        layoutEngine.activate();
+        start();
+      });
   });
