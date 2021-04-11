@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react'
 import Auth from '@aws-amplify/auth'
 
 Auth.configure({
-    userPoolId: 'TBD',
-    userPoolWebClientId: 'TBD',
+    userPoolId: process.env.USER_POOL_ID,
+    userPoolWebClientId: process.env.USER_POOL_WEB_CLIENT_ID,
     oauth: {
-        domain: 'tbd.auth.us-east-1.amazoncognito.com',
+        domain: `${process.env.USER_POOL_DOMAIN}.auth.us-east-1.amazoncognito.com`,
         scope: ['email', 'aws.cognito.signin.user.admin', 'openid'],
         redirectSignIn: window.location.origin,
         redirectSignOut: window.location.origin,

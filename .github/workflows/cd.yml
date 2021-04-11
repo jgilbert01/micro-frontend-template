@@ -35,6 +35,16 @@ jobs:
           npm run build
           npm run dp:stg:e
         working-directory: ./main
+      - name: build and deploy shared
+        run: |
+          npm ci
+          npm run build
+          npm run dp:stg:e
+        working-directory: ./shared
+        env:
+          USER_POOL_ID: ${{ secrets.USER_POOL_ID }}
+          USER_POOL_WEB_CLIENT_ID: ${{ secrets.USER_POOL_WEB_CLIENT_ID }}
+          USER_POOL_DOMAIN: ${{ secrets.USER_POOL_DOMAIN }}
       - name: build and deploy nav
         run: |
           npm ci

@@ -27,6 +27,11 @@ module.exports = (webpackConfigEnv, argv) => {
       ),
     },
     plugins: [
+      new webpack.DefinePlugin({
+        'process.env.USER_POOL_ID': JSON.stringify(process.env.USER_POOL_ID),
+        'process.env.USER_POOL_WEB_CLIENT_ID': JSON.stringify(process.env.USER_POOL_WEB_CLIENT_ID),
+        'process.env.USER_POOL_DOMAIN': JSON.stringify(process.env.USER_POOL_DOMAIN),
+      }),
       new CopyPlugin({
         patterns: [{
           from: 'mfe.json',
