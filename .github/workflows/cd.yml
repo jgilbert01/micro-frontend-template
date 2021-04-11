@@ -19,7 +19,7 @@ jobs:
           npm ci
           npm run build
           npm run dp:stg:e
-        working-drectory: ./main      
+        working-directory: ./main      
   nav:
     runs-on: ubuntu-latest
     steps:
@@ -33,4 +33,4 @@ jobs:
           npm ci
           npm run build
           npm run dp:stg:e
-        working-drectory: ./nav      
+        working-directory: ./nav      
