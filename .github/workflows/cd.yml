@@ -6,15 +6,29 @@ on:
     branches: [ main ]
 
 jobs:
-  deploy:
+  main:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: 14.x
-    - name: main
-      working-directory: dart_project
-      run: npm ci
-      run: npm run build
-      run: npm run dp:stg:e
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          registry-url: https://registry.npmjs.org/
+      - run: |
+          npm ci
+          npm run build
+          npm run dp:stg:e
+        working-drectory: ./main      
+  nav:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          registry-url: https://registry.npmjs.org/
+      - run: |
+          npm ci
+          npm run build
+          npm run dp:stg:e
+        working-drectory: ./nav      
