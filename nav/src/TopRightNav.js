@@ -10,7 +10,7 @@ import {
 
 import Parcel from 'single-spa-react/parcel'
 import { Link } from "@reach/router";
-import { useMountPoint, useWindowEvent, dispatchWindowEvent } from '@mfe/shared';
+import { useMountPoint, useWindowEvent, dispatchWindowEvent, useAuth } from '@mfe/shared';
 
 export const useRightSidebar = () => {
   const [state, dispatch] = useReducer(parcelReducer, { visible: false });
@@ -47,6 +47,7 @@ export const parcelReducer = (state, action) => {
 
 export const TopRightNav = ({ children, toggle }) => {
   const { items, loading, error } = useMountPoint('top-right-nav');
+  const { isSignedIn, hasRole } = useAuth();
 
   useWindowEvent('TopRightNav', (e) => {
     console.log('TopRightNav: ', e);
@@ -62,16 +63,19 @@ export const TopRightNav = ({ children, toggle }) => {
         : error ?
           <Menu.Item>{error}</Menu.Item>
           :
-          items.map((item) => item.parcel ?
-            <Menu.Item key={item.key} onClick={toggle({ ...item })}>
-              <Icon name={item.icon} />
-              {item.count ? <Label color='red' circular floating >{item.count}</Label> : undefined}
-              {item.content}
-            </Menu.Item>
-            :
-            <Menu.Item {...item} as={Link} />
-          )}
-          {children}
+          items
+            .filter((item) => !item.isSignedIn || isSignedIn)
+            .filter((item) => !item.role || hasRole(item.role))
+            .map((item) => item.parcel ?
+              <Menu.Item key={item.key} onClick={toggle({ ...item })}>
+                <Icon name={item.icon} />
+                {item.count ? <Label color='red' circular floating >{item.count}</Label> : undefined}
+                {item.content}
+              </Menu.Item>
+              :
+              <Menu.Item {...item} as={Link} />
+            )}
+      {children}
     </Menu.Menu>
   );
 };
