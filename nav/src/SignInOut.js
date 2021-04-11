@@ -12,7 +12,7 @@ const SignIn = ({ signIn }) => (
   </Menu.Item>
 );
 
-const SignOut = ({ signOut }) => (
+const SignOut = ({ signOut, user }) => (
   <Menu.Item
     key='signOut'
     onClick={signOut}>
