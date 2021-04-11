@@ -9,24 +9,37 @@
     "routes": [
       {
         "type": "route",
-        "path": "/",
+        "path": "/home",
         "routes": [
           {
             "type": "application",
             "name": "@mfe/home"
           }
         ]
+      },
+      {
+        "type": "route",
+        "path": "/home2",
+        "routes": [
+          {
+            "type": "application",
+            "name": "@mfe/home"
+          }
+        ],
+        "props": {
+          "description": "This is a property of the profile instance of the generic app."
+        }
       }
     ]
   },
   "mount-points": {
     "left-nav": [
       {
-        "id": "home",
+        "key": "home",
         "order": 10,
-        "title": "Home",
+        "content": "Home",
         "icon": "home",
-        "route": "/"
+        "to": "/home"
       }
     ]
   }
