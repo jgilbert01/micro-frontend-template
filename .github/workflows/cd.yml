@@ -50,3 +50,5 @@ jobs:
           npm run build
           npm run dp:stg:e
         working-directory: ./nav
+        env:
+          STG_E_BUCKET_NAME: ${{ secrets.STG_E_BUCKET_NAME }}        
