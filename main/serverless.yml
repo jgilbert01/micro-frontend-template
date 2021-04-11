@@ -27,19 +27,14 @@ custom:
         key: index.html
         headers:
           CacheControl: max-age=300 # 5 minutes
-  # dns:
-  #   hostedZoneId: ZZZZZZZZZZZZZZ
-  #   domainName: example.com
-  #   endpoint: app.${self:custom.cdn.domainName}
-  #   hostedZoneId: ${self:custom.accounts.${opt:acct}.hostedZoneId}
-  #   domainName: ${self:custom.accounts.${opt:acct}.domainName}
-  #   endpoint: ${self:custom.accounts.${opt:acct}.endpoint}
+  dns:
+    hostedZoneId: ${env:DEV_HOSTED_ZONE_ID}
+    domainName: ${env:DOMAIN_NAME}
+    endpoint: mfe-demo.${self:custom.dns.domainName}
   cdn:
-    # aliases:
-    #   - ${self:custom.cdn.endpoint}
-    # acmCertificateArn: arn:aws:acm:region:account-id:certificate/certificate-id
-    # disabled: true
-    # enabled: stage1,stage2
+    aliases:
+      - ${self:custom.dns.endpoint}
+    acmCertificateArn: ${env:DEV_CERT_ARN}
 
 resources:
   Resources:

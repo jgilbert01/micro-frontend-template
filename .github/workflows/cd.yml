@@ -35,6 +35,10 @@ jobs:
           npm run build
           npm run dp:stg:e
         working-directory: ./main
+        env:
+          DOMAIN_NAME: ${{ secrets.DOMAIN_NAME }}
+          DEV_HOSTED_ZONE_ID: ${{ secrets.DEV_HOSTED_ZONE_ID }}
+          DEV_CERT_ARN: ${{ secrets.DEV_CERT_ARN }}
       - name: build and deploy shared
         run: |
           npm ci
