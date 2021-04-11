@@ -2,8 +2,8 @@ service: mfe-manifest-deployer
 
 provider:
   name: aws
-  # cfnRole: arn:aws:iam::${self:custom.accounts.${opt:acct}.accountNumber}:role/cfnRole
-  # deploymentBucket: myprefix-${opt:acct}-${opt:region}-serverlessdeploymentbucket
+  cfnRole: arn:aws:iam::${self:custom.accounts.${opt:acct}.accountNumber}:role/cfnRole
+  deploymentBucket: sadpbp-${opt:acct}-${opt:region}-serverless-deployment
   runtime: nodejs14.x
   environment:
     ACCOUNT_NAME: ${opt:acct}
@@ -38,7 +38,7 @@ custom:
     includeModules: true
   accounts:
     dev:
-      # accountNumber: 123456789012
+      accountNumber: ${env:DEV_AWS_ACCOUNT_NUMBER}
       debug: '*'
     prod:
       # accountNumber: 123456789012
