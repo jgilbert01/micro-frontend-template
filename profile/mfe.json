@@ -1,0 +1,33 @@
+{
+  "orgName": "mfe",
+  "projectName": "profile",
+  "imports": {
+    "@mfe/profile": "/mfe-profile/SHA/mfe-profile.js",
+    "@mfe/profile/": "/mfe-profile/SHA/"
+  },
+  "layout": {
+    "routes": [
+      {
+        "type": "route",
+        "path": "/profile",
+        "routes": [
+          {
+            "type": "application",
+            "name": "@mfe/profile"
+          }
+        ]
+      }
+    ]
+  },
+  "mount-points": {
+    "top-right-nav": [
+      {
+        "key": "profile",
+        "order": 40,
+        "content": "Profile",
+        "icon": "user",
+        "to": "/profile"
+      }
+    ]
+  }
+}

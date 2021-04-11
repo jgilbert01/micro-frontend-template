@@ -47,3 +47,9 @@ jobs:
           npm run build
           npm run dp:stg:e
         working-directory: ./home
+      - name: build and deploy profile
+        run: |
+          npm ci
+          npm run build
+          npm run dp:stg:e
+        working-directory: ./profile
