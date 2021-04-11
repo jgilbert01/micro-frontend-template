@@ -3,7 +3,7 @@ service: mfe-main
 provider:
   name: aws
   cfnRole: arn:aws:iam::${self:custom.accounts.${opt:acct}.accountNumber}:role/cfnRole
-  deploymentBucket: sadpbp-${opt:acct}-${opt:region}-serverlessdeploymentbucket
+  deploymentBucket: sadpbp-${opt:acct}-${opt:region}-serverless-deployment
 
 plugins:
   - serverless-spa-config
