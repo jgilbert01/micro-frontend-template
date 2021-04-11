@@ -2,8 +2,8 @@
     "orgName": "mfe",
     "projectName": "nav",
     "imports": {
-        "@mfe/nav": "/mfe-nav/stg/mfe-nav.js",
-        "@mfe/nav/": "/mfe-nav/stg/"
+        "@mfe/nav": "/mfe-nav/SHA/mfe-nav.js",
+        "@mfe/nav/": "/mfe-nav/SHA/"
     },
     "layout": {
         "order": 1,
