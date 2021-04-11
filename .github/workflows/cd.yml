@@ -53,3 +53,21 @@ jobs:
           npm run build
           npm run dp:stg:e
         working-directory: ./profile
+      - name: build and deploy tasks
+        run: |
+          npm ci
+          npm run build
+          npm run dp:stg:e
+        working-directory: ./tasks
+      - name: build and deploy task
+        run: |
+          npm ci
+          npm run build
+          npm run dp:stg:e
+        working-directory: ./task
+      - name: build and deploy things
+        run: |
+          npm ci
+          npm run build
+          npm run dp:stg:e
+        working-directory: ./things
