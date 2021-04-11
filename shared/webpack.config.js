@@ -2,6 +2,7 @@ const path = require('path');
 const { merge } = require('webpack-merge');
 const singleSpaDefaults = require('webpack-config-single-spa-react');
 const CopyPlugin = require('copy-webpack-plugin');
+const { DefinePlugin } = require('webpack');
 
 const orgName = 'mfe';
 const projectName = 'shared';
@@ -27,7 +28,7 @@ module.exports = (webpackConfigEnv, argv) => {
       ),
     },
     plugins: [
-      new webpack.DefinePlugin({
+      new DefinePlugin({
         'process.env.USER_POOL_ID': JSON.stringify(process.env.USER_POOL_ID),
         'process.env.USER_POOL_WEB_CLIENT_ID': JSON.stringify(process.env.USER_POOL_WEB_CLIENT_ID),
         'process.env.USER_POOL_DOMAIN': JSON.stringify(process.env.USER_POOL_DOMAIN),
