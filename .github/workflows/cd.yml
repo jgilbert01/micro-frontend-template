@@ -9,7 +9,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      DEV_AWS_ACCOUNT_NUMBER: ${{ secrets.DEV_AWS_ACCOUNT_NUMBER }}        
+      DEV_AWS_ACCOUNT_NUMBER: ${{ secrets.DEV_AWS_ACCOUNT_NUMBER }}
+      STG_E_BUCKET_NAME: ${{ secrets.STG_E_BUCKET_NAME }}      
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -40,3 +41,9 @@ jobs:
           npm run build
           npm run dp:stg:e
         working-directory: ./nav
+      - name: build and deploy home
+        run: |
+          npm ci
+          npm run build
+          npm run dp:stg:e
+        working-directory: ./home
