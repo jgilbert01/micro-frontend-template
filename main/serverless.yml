@@ -2,8 +2,8 @@ service: mfe-main
 
 provider:
   name: aws
-  # cfnRole: arn:aws:iam::${self:custom.accounts.${opt:acct}.accountNumber}:role/cfnRole
-  # deploymentBucket: myprefix-${opt:acct}-${opt:region}-serverlessdeploymentbucket
+  cfnRole: arn:aws:iam::${self:custom.accounts.${opt:acct}.accountNumber}:role/cfnRole
+  deploymentBucket: sadpbp-${opt:acct}-${opt:region}-serverlessdeploymentbucket
 
 plugins:
   - serverless-spa-config
@@ -12,7 +12,7 @@ plugins:
 custom:
   accounts:
     dev:
-      accountNumber: 123456789012
+      accountNumber: ${env:DEV_AWS_ACCOUNT_NUMBER}
     prod:
       accountNumber: 210987654321
   spa:
