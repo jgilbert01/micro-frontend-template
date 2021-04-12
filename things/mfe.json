@@ -26,7 +26,8 @@
         "order": 40,
         "content": "Things",
         "icon": "tv",
-        "to": "/things"
+        "to": "/things",
+        "isSignedIn": true
       }
     ]
   }
