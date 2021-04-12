@@ -12,7 +12,8 @@
         "order": 10,
         "content": "Tasks",
         "icon": "tasks",
-        "parcel": "@mfe/tasks"
+        "parcel": "@mfe/tasks",
+        "isSignedIn": true
       }
     ]
   }
