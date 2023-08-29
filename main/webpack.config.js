@@ -3,6 +3,7 @@ const { merge } = require('webpack-merge');
 const singleSpaDefaults = require('webpack-config-single-spa-react');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const { InjectManifest } = require('workbox-webpack-plugin');
 
 const orgName = 'mfe';
 const projectName = 'main';
@@ -47,6 +48,10 @@ module.exports = (webpackConfigEnv, argv) => {
             },
           },
         }],
+        new InjectManifest({
+          swSrc: './src/service-worker.js',
+          swDest: '../../service-worker.js',
+        }),
       }),
     ],
   });

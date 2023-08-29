@@ -1,0 +1,157 @@
+{
+  "name": "@template-ui/db",
+  "scripts": {
+    "clean": "rimraf -rf dist/ coverage/",
+    "pre-commit": "lint-staged && npm test --watchAll=false",
+    "start": "better-npm-run start",
+    "start:standalone": "webpack serve --port 9001 --env standalone",
+    "prebuild": "npm run clean",
+    "build": "webpack --mode=production",
+    "build:stg:w": "better-npm-run build:stg:w",
+    "build:stg:e": "better-npm-run build:stg:e",
+    "build:prd:w": "better-npm-run build:prd:w",
+    "build:prd:e": "better-npm-run build:prd:e",
+    "analyze": "webpack --mode=production --env analyze",
+    "lint": "eslint src --fix --ext js",
+    "pretest": "npm run clean && npm run lint",
+    "test": "jest",
+    "test:ci": "better-npm-run test:ci",
+    "watch-tests": "jest --watch",
+    "coverage": "jest --coverage",
+    "dp:stg:e": "eval \"$(assume-role) s3-deploy './dist/**' --cwd './dist/' --region us-east-1 --bucket $STG_E_BUCKET_NAME --cache 31536000 --private\"",
+    "dp:stg:w": "eval \"$(assume-role) s3-deploy './dist/**' --cwd './dist/' --region us-west-1 --bucket $STG_W_BUCKET_NAME --cache 31536000 --private\"",
+    "dp:prd:e": "eval \"$(assume-role) s3-deploy './dist/**' --cwd './dist/' --region us-east-1 --bucket $PRD_E_BUCKET_NAME --cache 31536000 --private\"",
+    "dp:prd:w": "eval \"$(assume-role) s3-deploy './dist/**' --cwd './dist/' --region us-west-1 --bucket $PRD_W_BUCKET_NAME --cache 31536000 --private\""
+  },
+  "betterScripts": {
+    "start": {
+      "command": "webpack serve --port 9001 --env isLocal",
+      "env": {
+        "ENV": "stg",
+        "LOV_SERVICE_URL": "/api-template-lov-service"
+      }
+    },
+    "build:stg:w": {
+      "command": "npm run build",
+      "env": {
+        "ENV": "stg",
+        "LOV_SERVICE_URL": "/api-template-lov-service"
+      }
+    },
+    "build:stg:e": {
+      "command": "npm run build",
+      "env": {
+        "ENV": "stg",
+        "LOV_SERVICE_URL": "/api-template-lov-service"
+      }
+    },
+    "build:prd:w": {
+      "command": "npm run build",
+      "env": {
+        "ENV": "prd",
+        "LOV_SERVICE_URL": "/api-template-lov-service"
+      }
+    },
+    "build:prd:e": {
+      "command": "npm run build",
+      "env": {
+        "ENV": "prd",
+        "LOV_SERVICE_URL": "/api-template-lov-service"
+      }
+    },
+    "test:ci": {
+      "command": "jest --coverage --testResultsProcessor",
+      "env": {
+        "CI": "true"
+      }
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,css,md}": [
+      "prettier --write",
+      "eslint --fix-dry-run"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/eslint-parser": "^7.16.7",
+    "@babel/plugin-transform-runtime": "^7.16.7",
+    "@babel/preset-env": "^7.16.7",
+    "@babel/preset-react": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7",
+    "@babel/runtime": "^7.16.7",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "@testing-library/react-hooks": "^7.0.2",
+    "@testing-library/user-event": "^7.2.1",
+    "@types/enzyme": "^3.10.12",
+    "@types/faker": "^5.1.3",
+    "@types/jest": "^27.0.5",
+    "@types/node": "^14.0.0",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.2",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/react-select": "^3.0.19",
+    "@types/systemjs": "^6.1.1",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.7",
+    "autoprefixer": "^10.4.7",
+    "aws-assume-role-cicd": "^1.0.4",
+    "babel-jest": "^27.0.5",
+    "better-npm-run": "^0.1.1",
+    "clean-webpack-plugin": "^4.0.0",
+    "concurrently": "^6.2.0",
+    "copy-webpack-plugin": "^10.2.4",
+    "enzyme": "^3.11.0",
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-react-important-stuff": "^3.0.0",
+    "eslint-config-ts-react-important-stuff": "^3.0.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "fake-indexeddb": "^4.0.2",
+    "husky": "^7.0.0",
+    "identity-obj-proxy": "^3.0.0",
+    "is-ci": "^3.0.0",
+    "jest": "^27.0.5",
+    "jest-cli": "^27.0.5",
+    "jest-environment-jsdom": "^27.0.5",
+    "jest-localstorage-mock": "^2.4.21",
+    "jest-react-hooks-shallow": "^1.5.1",
+    "lint-staged": "^12.4.1",
+    "mini-css-extract-plugin": "^2.4.2",
+    "nock": "^13.3.3",
+    "postcss": "^8.3.5",
+    "postcss-loader": "^6.2.0",
+    "prettier": "^2.3.2",
+    "pretty-quick": "^3.1.1",
+    "react-select-event": "^5.3.0",
+    "s3-deploy": "^1.4.0",
+    "sass-lint": "^1.13.1",
+    "sass-loader": "^12.6.0",
+    "simulant": "^0.2.2",
+    "typescript": "^4.6.0",
+    "typescript-plugin-css-modules": "^3.4.0",
+    "webpack": "^5.8.0",
+    "webpack-cli": "^4.9.0",
+    "webpack-config-single-spa-react-ts": "^4.0.3",
+    "webpack-dev-server": "^4.9.0",
+    "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^2.8.10",
+    "axios": "^0.27.2",
+    "dexie": "^3.2.4",
+    "dexie-observable": "^4.0.1-beta.13",
+    "dexie-react-hooks": "^1.1.6",
+    "galactic-state": "^2.0.1",
+    "lodash": "^4.17.21",
+    "react": "^17.0.2",
+    "react-bootstrap": "^2.3.1",
+    "react-dom": "^17.0.2",
+    "react-hook-form": "^7.31.0",
+    "react-icons": "^4.10.1",
+    "react-query": "^3.39.1",
+    "react-router-dom": "6.3.0",
+    "single-spa-react": "^4.6.0",
+    "zod": "^3.17.3"
+  }
+}

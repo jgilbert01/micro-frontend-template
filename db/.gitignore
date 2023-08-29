@@ -1,0 +1,34 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+express-serving/node_modules    
+
+
+# testing
+/coverage
+/reports
+.scannerwork
+
+# production
+/build
+/dist
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.secrets
+.serverless
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor config
+.idea
+.vscode
