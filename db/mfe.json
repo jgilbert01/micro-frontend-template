@@ -1,0 +1,39 @@
+{
+  "orgName": "template-ui",
+  "projectName": "db",
+  "imports": {
+    "@template-ui/db": "/template-ui-db/SHA/template-ui-db.js",
+    "@template-ui/db/": "/template-ui-db/SHA/"
+  },
+  "layout": {
+    "order": 1,
+    "routes": [
+      {
+        "type": "application",
+        "name": "@template-ui/db",
+        "props": {}
+      }
+    ]
+  },
+  "mount-points": {
+    "main": [
+      {
+        "import": "@template-ui/db",
+        "order": 30,
+        "allow": [],
+        "deny": [],
+        "env": []
+      }
+    ],
+    "db-prefetch": [
+      {
+        "queryKey": [
+          "lovs",
+          "organization"
+        ],
+        "queryUrl": "LOV_SERVICE_URL/lovs/organization",
+        "queryOptions": {}
+      }
+    ]
+  }
+}
