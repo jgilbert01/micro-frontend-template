@@ -43,6 +43,14 @@
   },
   "dependencies": {
     "single-spa": "^5.8.2",
-    "single-spa-layout": "1.4.1"
+    "single-spa-layout": "1.4.1",
+    "workbox-background-sync": "^6.5.3",
+    "workbox-cacheable-response": "^7.0.0",
+    "workbox-core": "^6.5.3",
+    "workbox-expiration": "^7.0.0",
+    "workbox-precaching": "^6.5.3",
+    "workbox-recipes": "^6.5.3",
+    "workbox-routing": "^6.5.3",
+    "workbox-strategies": "^6.5.3"
   }
 }

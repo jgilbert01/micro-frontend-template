@@ -9,7 +9,7 @@ const orgName = 'mfe';
 const projectName = 'main';
 const SHA = process.env.CI_COMMIT_SHA || process.env.GITHUB_SHA || 'stg';
 
-module.exports = (webpackConfigEnv, argv) => {  
+module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
     orgName,
     projectName,
@@ -40,18 +40,21 @@ module.exports = (webpackConfigEnv, argv) => {
         },
       }),
       new CopyPlugin({
-        patterns: [{
-          from: 'mfe.json',
-          transform: {
-            transformer(content) {
-              return Buffer.from(content.toString().replace(/SHA/g, SHA));
+        patterns: [
+          { from: 'public/**', to: '../../' },
+          {
+            from: 'mfe.json',
+            transform: {
+              transformer(content) {
+                return Buffer.from(content.toString().replace(/SHA/g, SHA));
+              },
             },
-          },
-        }],
-        new InjectManifest({
-          swSrc: './src/service-worker.js',
-          swDest: '../../service-worker.js',
-        }),
+          }
+        ],
+      }),
+      new InjectManifest({
+        swSrc: './src/service-worker.js',
+        swDest: '../../service-worker.js',
       }),
     ],
   });
