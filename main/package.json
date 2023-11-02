@@ -38,10 +38,19 @@
     "webpack-cli": "^4.2.0",
     "webpack-config-single-spa-react": "^2.0.0-beta.1",
     "webpack-dev-server": "^4.0.0-beta.0",
-    "webpack-merge": "^5.5.0"
+    "webpack-merge": "^5.5.0",
+    "workbox-webpack-plugin": "^6.5.2"
   },
   "dependencies": {
     "single-spa": "^5.8.2",
-    "single-spa-layout": "1.4.1"
+    "single-spa-layout": "1.4.1",
+    "workbox-background-sync": "^6.5.3",
+    "workbox-cacheable-response": "^7.0.0",
+    "workbox-core": "^6.5.3",
+    "workbox-expiration": "^7.0.0",
+    "workbox-precaching": "^6.5.3",
+    "workbox-recipes": "^6.5.3",
+    "workbox-routing": "^6.5.3",
+    "workbox-strategies": "^6.5.3"
   }
 }
